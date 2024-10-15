@@ -8,17 +8,16 @@ namespace Burgers
 {
     public class Menu
     {
-        public string Header { get; set; }
+        private readonly List<string> _menusteps;
 
-        public string Body { get; set; }
-
-        public string Footer { get; set; }
+        public Menu(List<string> menusteps)
+        {
+            _menusteps = menusteps;
+        }
 
         public override string ToString() =>
            new StringBuilder()
-            .Append(Header)
-            .Append(Body)
-            .Append(Footer)
+            .Append(_menusteps)
             .ToString();
     }
 }

@@ -9,13 +9,20 @@ namespace Burgers
 {
     public class ClientBurgerDirector
     {
-        List<string> Ingridients = new List<string> { "Cheese", "Tomatoes", "Onion", "Cucumbers", "Cabbage", "MeatCutlet" };
+        private List<string> _ingridients = new List<string> { "Cheese", "Tomatoes", "Onion", "Cucumbers", "Cabbage", "MeatCutlet" };
 
-        List<string> ClientBurger = new List<string>();
+        private List<string> _clientburger { get; set; }
+
+        public ClientBurgerDirector()
+        {
+            _clientburger = new List<string>();
+        }
+
+        
 
         public void BuildClientBurger(BurgerBuilder burger)
         {
-            foreach (var ingridient in Ingridients)
+            foreach (var ingridient in _ingridients)
             {
                 Console.WriteLine($"Wanna add {ingridient} in your burger? (yes or no)");
 
@@ -25,51 +32,52 @@ namespace Burgers
                 {
                     switch (ingridient)
                     {
-                        case "Cheese":
+                        case "Cheese\n":
                             {
                                 burger.BuildCheese();
-                                ClientBurger.Add(ingridient);
+                                _clientburger.Add(ingridient);
                                 break;
                             }
-                        case "Tomatoes":
+                        case "Tomatoes\n":
                             {
                                 burger.BuildTomatoes();
-                                ClientBurger.Add(ingridient);
+                                _clientburger.Add(ingridient);
                                 break;
                             }
-                        case "Onion":
+                        case "Onion\n":
                             {
                                 burger.BuildOnion();
-                                ClientBurger.Add(ingridient);
+                                _clientburger.Add(ingridient);
                                 break;
                             }
-                        case "Cucumbers":
+                        case "Cucumbers\n":
                             {
                                 burger.BuildCucumber();
-                                ClientBurger.Add(ingridient);
+                                _clientburger.Add(ingridient);
                                 break;
                             }
-                        case "Cabbage":
+                        case "Cabbage\n":
                             {
                                 burger.BuildCabbage();
-                                ClientBurger.Add(ingridient);
+                                _clientburger.Add(ingridient);
                                 break;
                             }
-                        case "MeatCutlet":
+                        case "MeatCutlet\n":
                             {
                                 burger.BuildMeatCutlet();
-                                ClientBurger.Add(ingridient);
+                                _clientburger.Add(ingridient);
                                 break;
                             }
                     }
                 }
-
             }
+            var cookedburger = burger;
+            cookedburger.GetBurger();
         }
 
         public List<string> GetCookedClientBruger()
         {
-            return ClientBurger;
+            return _clientburger;
         }
     }
 }
